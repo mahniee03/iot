@@ -1,0 +1,23 @@
+.link {
+    margin-right: 15px;
+    color: #1E3175;
+
+    &:hover {
+        color: #1E3175;
+    }
+}
+
+h4 {
+    margin: 0px;
+    margin-right: 50px;
+}
+
+.year {
+    font-weight: 350;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

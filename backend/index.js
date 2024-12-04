@@ -20,10 +20,10 @@ const reverseFormatDate = (dateString) => {
 
 // API để thêm dữ liệu cảm biến
 app.post("/api/data-sensor", (req, res) => {
-  const { temperature, humidity, brightness } = req.body;
+  const { temperature, humidity, brightness, random_value } = req.body;
 
-  const query = 'INSERT INTO datasensor (temperature, humidity, brightness, time) VALUES (?, ?, ?, NOW())';
-  db.query(query, [temperature, humidity, brightness], (err) => {
+  const query = 'INSERT INTO datasensor (temperature, humidity, brightness, random_value, time) VALUES (?, ?, ?, ?, NOW())';
+  db.query(query, [temperature, humidity, brightness, random_value], (err) => {
     if (err) {
       res.status(500).json({ error: "Internal server error" });
     } else {
@@ -45,7 +45,7 @@ app.get("/api/get-sensor-data", (req, res) => {
   const params = [];
 
   if (searchText && searchedColumn) {
-    if (searchedColumn === "temperature" || searchedColumn === "humidity" || searchedColumn === "brightness") {
+    if (searchedColumn === "temperature" || searchedColumn === "humidity" || searchedColumn === "brightness" || searchedColumn === "random_value") {
       query += ` WHERE ${searchedColumn} = ?`;
       params.push(parseFloat(searchText));
     } else if (searchedColumn === "time") {
@@ -78,21 +78,6 @@ app.get("/api/get-sensor-data", (req, res) => {
   });
 });
 
-// API để lấy 10 dữ liệu cảm biến mới nhất
-app.get("/api/get-latest-sensor-data", (req, res) => {
-  const query = "SELECT * FROM datasensor ORDER BY time DESC LIMIT 10";
-
-  db.query(query, (err, results) => {
-    if (err) {
-      res.status(500).json({ error: "Error retrieving sensor data" });
-    } else {
-      res.json({
-        data: results,
-        count: results.length,
-      });
-    }
-  });
-});
 
 
 // API để thêm lịch sử hành động của thiết bị
@@ -152,27 +137,6 @@ app.get("/api/get-action-history", (req, res) => {
     }
   });
 });
-
-// // thêm dữ liệu điều khiển thiết bị
-// app.post("/api/action-history", async (req, res) => {
-//   const { device, action } = req.body;
-//   console.log(device, action);
-
-//   const query = 'INSERT INTO datasensor (device, action, time) VALUES (?, ?, NOW())';
-  
-//   try {
-//     const newActionHistory = await ActionHistory.create({
-//       device,
-//       action
-//     });
-//     if (!newActionHistory) {
-//       res.status(401).json({ message: "Error created action history" });
-//     }
-//     res.status(200).json({ message: "Action history created successfully" });
-//   } catch (err) {
-//     res.status(500).json({ error: "Internal server error" });
-//   }
-// });
 
 // Khởi động server
 const port = 3006;

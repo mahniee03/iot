@@ -101,6 +101,7 @@ function Profile() {
             <Tabs defaultActiveKey="3" items={tabItems} />
           </Col>
           <Col span={6} pull={18}>
+          <a href="https://www.facebook.com/profile.php?id=100044682945477" target="_blank" rel="noopener noreferrer">
             <Card
               hoverable
               style={{
@@ -109,7 +110,7 @@ function Profile() {
               cover={
                 <img
                   alt="avt"
-                  // src="https://th.bing.com/th/id/OIP.uv356bS3V2vPqq09778PGAHaLH?rs=1&pid=ImgDetMain"
+                  src="https://scontent.fhan18-1.fna.fbcdn.net/v/t39.30808-6/332495579_758789185867999_8467011211957057698_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=a5f93a&_nc_eui2=AeGF8V3qlC2bh-nZ8Do2GNwl2YuFPbTOnXTZi4U9tM6ddIXYYNJPa9qlEd5trTbZAHJmE6JqV1NBDfuSsMIAJ9JG&_nc_ohc=v9YyixnYVi4Q7kNvgFrqcXo&_nc_zt=23&_nc_ht=scontent.fhan18-1.fna&_nc_gid=ASDf_-bxARqocqFkztY9HT2&oh=00_AYBOSlV48rTkEMIYoGlt8J63mPmAYcdnR2zHxfdX8i0XRg&oe=6755BD4A"
                 />
               }
             >
@@ -118,6 +119,7 @@ function Profile() {
                 description="Posts and Telecommunications Institute of Technology"
               />
             </Card>
+            </a>
           </Col>
         </Row>
       </ConfigProvider>

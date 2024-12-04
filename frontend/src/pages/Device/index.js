@@ -201,7 +201,7 @@ function Device() {
       <ConfigProvider
         theme={{
           token: {
-            colorPrimary: "#FF7F50",
+            colorPrimary: "#1E3175",
           },
         }}
       >

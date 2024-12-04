@@ -2,8 +2,8 @@ import { Card, Col, Row, Progress } from "antd";
 import { useMQTT } from "../../config/MQTTContext.js";
 
 function EnvironmentFactors2() {
-//   const { connected, dataSensor, temperatureData, humidityData, brightnessData } = useMQTT();
-  const random_value = 30;
+  const { connected, dataSensor, temperatureData, humidityData, brightnessData } = useMQTT();
+  // const random_value = 30;
   // const humidity = 70;
   // const brightness = 100;
   // Màu sắc của các thanh tiến độ
@@ -21,7 +21,7 @@ function EnvironmentFactors2() {
             <p style={{ margin: 0, marginBottom: "10px", marginTop: "-10px"}}>Cảm biến</p>
             <Progress
               type="dashboard"
-              percent={(random_value)}
+              percent={(dataSensor.random_value)}
               strokeColor={random_valueColors}
               strokeWidth={12}
               size={90}

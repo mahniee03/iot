@@ -196,9 +196,8 @@ function Switches() {
 
   return (
     <>
-      <div style={{ padding: "0px 80px 0px 0px", marginBottom: "20px" }}>
-        <h3 style={{ color: "rgba(60, 160, 236, 1)" }}>Device's Switch</h3>
-
+      <div style={{ padding: "0px 80px 0px 0px", marginBottom: "20px", marginLeft: "20px", marginRight: "-30px"}}>
+        {/* <h3 style={{ color: "rgba(60, 160, 236, 1)" }}>Device's Switch</h3> */}
         <ConfigProvider
 
           theme={{
@@ -214,6 +213,7 @@ function Switches() {
         >
           <Descriptions bordered items={items} />
         </ConfigProvider>
+        
       </div>
     </>
   );

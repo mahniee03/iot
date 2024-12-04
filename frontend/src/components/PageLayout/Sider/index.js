@@ -15,7 +15,7 @@ const items = [
   {
     key: "dashboard2",
     icon: <LineChartOutlined />,
-    label: "Dashboard2",
+    label: "Dashboard 2",
   },
   {
     key: "environment",

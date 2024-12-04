@@ -7,16 +7,19 @@ export const MQTTProvider = ({ children }) => {
     const [client, setClient] = useState(null);
     const [connected, setConnected] = useState(false);
     const [dataSensor, setDataSensor] = useState({});
-
+    
     const [temperatureData, setTemperatureData] = useState([]);
     const [humidityData, setHumidityData] = useState([]);
     const [brightnessData, setBrightnessData] = useState([]);
+    const [randomValueData, setRandomValueData] = useState([]);
+    const [timeData, setTimeData] = useState([]);
 
     const handleNewData = useCallback((newData) => {
         console.log('Updating sensor data:', newData); // Log dữ liệu đầu vào
       
         const maxDataPoints = 10;
       
+
         setTemperatureData(prev => {
           const updated = [...prev, newData.temperature];
           console.log('Updated Temperature Data:', updated);
@@ -34,15 +37,27 @@ export const MQTTProvider = ({ children }) => {
           console.log('Updated Brightness Data:', updated);
           return updated.slice(-maxDataPoints);
         });
+
+        setRandomValueData(prev => {
+          const updated = [...prev, newData.random_value];
+          console.log('Updated Random Value Data:', updated);
+          return updated.slice(-maxDataPoints);
+        });
+
+        setTimeData(prev => {
+          const updated = [...prev, newData.time];
+          console.log('Updated Time Data:', updated);
+          return updated.slice(-maxDataPoints);
+        });
       }, []);
       
 
     useEffect(() => {
       const options = {
         host: '194.195.90.124', // Địa chỉ MQTT broker
-        port: 1883,             // Port MQTT
+        port: 9001,             // Port MQTT
         username: 'test',       // Tên đăng nhập
-        password: '123456'      // Mật khẩu
+        password: '123456',      // Mật khẩu
       };
         const mqttClient = mqtt.connect(options);
 
@@ -92,7 +107,7 @@ export const MQTTProvider = ({ children }) => {
     
 
     return (
-        <MQTTContext.Provider value={{ client, connected, dataSensor, temperatureData, humidityData, brightnessData }}>
+        <MQTTContext.Provider value={{ client, connected, dataSensor, temperatureData, humidityData, brightnessData, randomValueData, timeData }}>
             {children}
         </MQTTContext.Provider>
     );

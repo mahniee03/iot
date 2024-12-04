@@ -1,11 +1,11 @@
 import React from 'react';
 import { CChart } from '@coreui/react-chartjs';
 import { useMQTT } from "../../config/MQTTContext.js";
-// import { CChart } from '@coreui/react-chartjs';
+
 
 function LineChart() {
   const { temperatureData = [], humidityData = [], brightnessData = [] } = useMQTT();
-
+  const { timeData = [] } = useMQTT();
   // const sampleData = {
   //   temperatureData: [25, 26, 27, 28, 29, 30, 31, 32, 33, 34],
   //   humidityData: [70, 72, 74, 76, 78, 80, 82, 84, 86, 88],
@@ -23,7 +23,7 @@ function LineChart() {
       <CChart
         type="line"
         data={{
-          labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"], // Nhãn cho trục X
+          labels: timeData, // Nhãn cho trục X
           datasets: [
             {
               label: "Brightness",
@@ -81,8 +81,13 @@ function LineChart() {
             },
           },
         }}
+        style={{
+          height: "700px", // Tăng chiều cao
+          width: "790px",  // Tăng chiều rộng
+        }}
         customTooltips={false}
       />
+      
     </>
   );
 }

@@ -1,8 +1,10 @@
 import React from 'react';
 import { CChart } from '@coreui/react-chartjs';
+import { useMQTT } from "../../config/MQTTContext.js";
 function LineChart2() {
-
-  const sampleData = [25, 30, 26, 22, 23, 24, 27, 25, 30, 30];
+  const { randomValueData = [] } = useMQTT();
+  const { timeData = [] } = useMQTT();
+  // const sampleData = [25, 30, 26, 22, 23, 24, 27, 25, 30, 30];
   
   
   return (
@@ -10,7 +12,7 @@ function LineChart2() {
       <CChart
         type="line"
         data={{
-          labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"], // Nhãn cho trục X
+          labels: timeData, // Nhãn cho trục X
           datasets: [
             {
               label: "Cảm biến",
@@ -18,7 +20,7 @@ function LineChart2() {
               borderColor: "rgba(255, 206, 86, 1)",
               pointBackgroundColor: "rgba(151, 187, 205, 1)",
               pointBorderColor: "#000",
-              data: sampleData, // Dữ liệu ánh sáng
+              data: randomValueData, // Dữ liệu ánh sáng
             }
           ],
         }}
@@ -53,8 +55,9 @@ function LineChart2() {
           },
         }}
         style={{
-            height: "800px", // Tăng chiều cao
-            width: "790px",  // Tăng chiều rộng
+            height: "1000px", // Tăng chiều cao
+            width: "800px",  // Tăng chiều rộng
+            marginLeft: "-20px", // Đẩy biểu đồ về phía bên phải
           }}
         customTooltips={false}
       />

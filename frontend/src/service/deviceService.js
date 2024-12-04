@@ -6,6 +6,8 @@ export const postActionHistory = async (options) => {
 };
 
 export const getActionHistory = async (pageSize, page, searchText, searchedColumn) => {
-    const result = await get(`api/get-action-history?pageSize=${pageSize}&page=${page}&searchText=${searchText}&searchedColumn=${searchedColumn}`);
+    const result = await get(`api/get-action-history?pageSize=${pageSize}&page=${page}&searchText=${searchText}
+        &searchedColumn=${searchedColumn}`);
     return result;
 }
+

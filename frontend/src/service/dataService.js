@@ -1,7 +1,8 @@
 import { get } from "../config/api.js";
 
 export const getDataSensor = async (pageSize, page, searchText, searchedColumn, sortField, sortOrder) => {
-    const result = await get(`api/get-sensor-data?pageSize=${pageSize}&page=${page}&searchText=${searchText}&searchedColumn=${searchedColumn}&sortField=${sortField}&sortOrder=${sortOrder}`);
+    const result = await get(`api/get-sensor-data?pageSize=${pageSize}&page=${page}&searchText=${searchText}
+      &searchedColumn=${searchedColumn}&sortField=${sortField}&sortOrder=${sortOrder}`);
     return result;
 };
 

@@ -30,6 +30,7 @@ const layoutStyle = {
   borderRadius: 8,
   overflow: "hidden",
   width: "calc(100% - 8px)",
+  height: "100vh",
   maxWidth: "calc(100% - 8px)",
 };
 
@@ -61,7 +62,7 @@ function Dashboard() {
           <Layout>
 
             <Content style={chartStyle}>
-              {/* <h3 style={{ margin: "0", color: "#1E3175" }}>Chart</h3> */}
+              <h3 style={{ margin: "0", color: "#1E3175", marginTop: "-20px", marginBottom: "-20px"}}>Chart</h3>
               <div style={{ display: "flex", justifyContent: "center" }}>
                 {/* <Tabs defaultActiveKey="3" items={tabItems} tabBarStyle={{marginLeft: "55px"}} /> */}
                 <LineChart />
@@ -69,7 +70,7 @@ function Dashboard() {
 
             </Content>
             <Sider width="35%" style={switchStyle}>
-              {/* <h3 style={{ margin: "0", color: "#1E3175" }}>Device's Switch</h3> */}
+              <h3 style={{ margin: "0", color: "#1E3175", marginTop: "-20px", marginBottom: "10px" }}>Device's Switch</h3>
               <Switches />
             </Sider>
           </Layout>
